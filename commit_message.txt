@@ -1,0 +1,1 @@
+feat: re-skin UI with Coquette lovecore aesthetic, add spring animations, loader, offline support, and publish-ready README

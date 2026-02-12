@@ -1,0 +1,237 @@
+/* Coquette Lovecore Theme - Yes Page with Squishy Animations */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Homemade+Apple&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 20px;
+  font-family: 'Playfair Display', serif;
+  /* Cream background with celebration sparkles */
+  background-color: #fffaf0;
+  background-image: 
+    radial-gradient(circle, rgba(255, 105, 180, 0.1) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 193, 204, 0.15) 2px, transparent 2px);
+  background-size: 24px 24px, 48px 48px;
+  background-position: 0 0, 12px 12px;
+}
+
+/* ========== POP ENTRY ANIMATION ========== */
+@keyframes popEntry {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) rotate(2deg) scale(0.85);
+  }
+  50% {
+    transform: translateY(-15px) rotate(2deg) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(2deg) scale(1);
+  }
+}
+
+@keyframes celebrateBounce {
+  0%, 100% { transform: translateY(0) rotate(2deg); }
+  25% { transform: translateY(-6px) rotate(1deg); }
+  75% { transform: translateY(-3px) rotate(3deg); }
+}
+
+.container {
+  text-align: center;
+  background: #ffffff;
+  padding: 50px 55px 55px;
+  border-radius: 12px;
+  position: relative;
+  /* Love letter rotation */
+  transform: rotate(2deg);
+  box-shadow: 
+    0 18px 50px rgba(255, 105, 180, 0.25),
+    0 6px 20px rgba(0, 0, 0, 0.08),
+    inset 0 0 100px rgba(255, 241, 245, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 4px dashed #ffc1cc;
+  max-width: 90vw;
+  /* Pop Entry + Continuous Bounce */
+  animation: 
+    popEntry 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+    celebrateBounce 4s ease-in-out 1s infinite;
+}
+
+/* Animated Ribbon/Bow decoration */
+.container::before {
+  content: '🎀';
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3.5em;
+  filter: drop-shadow(0 5px 10px rgba(255, 105, 180, 0.35));
+  z-index: 10;
+  animation: bowCelebrate 1s ease-in-out infinite;
+}
+
+@keyframes bowCelebrate {
+  0%, 100% { transform: translateX(-50%) scale(1) rotate(-8deg); }
+  50% { transform: translateX(-50%) scale(1.15) rotate(8deg); }
+}
+
+/* Floating hearts corner */
+.container::after {
+  content: '💕';
+  position: absolute;
+  bottom: -18px;
+  right: -12px;
+  font-size: 2em;
+  animation: floatHearts 2s ease-in-out infinite;
+}
+
+@keyframes floatHearts {
+  0%, 100% { transform: translateY(0) rotate(15deg) scale(1); }
+  50% { transform: translateY(-12px) rotate(-10deg) scale(1.1); }
+}
+
+/* ========== ANIMATED TEXT ========== */
+@keyframes textSlideIn {
+  0% { opacity: 0; transform: translateX(-30px); }
+  60% { transform: translateX(5px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes textPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+@keyframes rainbowGlow {
+  0%, 100% { text-shadow: 2px 2px 0px #ffc1cc, 4px 4px 10px rgba(255, 105, 180, 0.3); }
+  50% { text-shadow: 2px 2px 0px #ffb3bf, 4px 4px 20px rgba(255, 105, 180, 0.5); }
+}
+
+.header_text {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 2.2em;
+  color: #ff69b4;
+  margin-bottom: 20px;
+  text-shadow: 
+    2px 2px 0px #ffc1cc,
+    4px 4px 10px rgba(255, 105, 180, 0.25);
+  letter-spacing: 1px;
+  animation: textSlideIn 0.7s ease-out both, textPulse 3s ease-in-out 1s infinite;
+}
+
+.header_text:nth-child(1) {
+  animation-delay: 0.2s, 1s;
+  color: #ff85c1;
+}
+
+.header_text:nth-child(2) {
+  animation-delay: 0.4s, 1.2s;
+  color: #ff69b4;
+}
+
+.header_text:last-of-type {
+  font-size: 2.6em;
+  color: #e75480;
+  position: relative;
+  animation: textSlideIn 0.7s ease-out 0.6s both, rainbowGlow 2s ease-in-out 1.5s infinite;
+}
+
+/* Floating hearts around the love message */
+.header_text:last-of-type::before {
+  content: '♡';
+  position: absolute;
+  left: -35px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffc1cc;
+  font-size: 0.7em;
+  animation: heartFloat 2s ease-in-out infinite;
+}
+
+.header_text:last-of-type::after {
+  content: '♡';
+  position: absolute;
+  right: -35px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffc1cc;
+  font-size: 0.7em;
+  animation: heartFloat 2s ease-in-out infinite 0.5s;
+}
+
+@keyframes heartFloat {
+  0%, 100% { transform: translateY(-50%) scale(1); opacity: 1; }
+  50% { transform: translateY(-60%) scale(1.2); opacity: 0.7; }
+}
+
+/* ========== FLOATING GIF ANIMATION ========== */
+@keyframes floatImage {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-6px) rotate(1deg); }
+  75% { transform: translateY(-4px) rotate(-1deg); }
+}
+
+@keyframes containerGlow {
+  0%, 100% { box-shadow: 0 10px 35px rgba(255, 105, 180, 0.2), inset 0 0 40px rgba(255, 250, 245, 0.8); }
+  50% { box-shadow: 0 15px 50px rgba(255, 105, 180, 0.35), inset 0 0 50px rgba(255, 241, 245, 0.9); }
+}
+
+.gif_container {
+  margin-top: 20px;
+  margin-bottom: 25px;
+  padding: 18px;
+  background: #fff;
+  border: 4px dashed #ffc1cc;
+  border-radius: 18px;
+  position: relative;
+  box-shadow: 
+    0 10px 35px rgba(255, 105, 180, 0.2),
+    inset 0 0 40px rgba(255, 250, 245, 0.8);
+  animation: 
+    popEntry 0.8s ease-out 0.8s both,
+    containerGlow 3s ease-in-out 2s infinite;
+}
+
+/* Animated decorative stickers */
+.gif_container::before {
+  content: '💖';
+  position: absolute;
+  top: -25px;
+  right: -18px;
+  font-size: 2.2em;
+  animation: sparkleHeart 1.2s ease-in-out infinite;
+}
+
+.gif_container::after {
+  content: '🌸';
+  position: absolute;
+  bottom: -20px;
+  left: -15px;
+  font-size: 2em;
+  animation: sparkleHeart 1.2s ease-in-out infinite 0.4s;
+}
+
+@keyframes sparkleHeart {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.25) rotate(15deg); }
+}
+
+.gif_container img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 14px;
+  display: block;
+  /* Floating animation for celebration */
+  animation: floatImage 2.5s ease-in-out infinite;
+}

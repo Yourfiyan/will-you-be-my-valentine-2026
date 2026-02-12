@@ -1,0 +1,262 @@
+/* Coquette Lovecore Theme - With Squishy Animations */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Homemade+Apple&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 20px;
+  font-family: 'Playfair Display', serif;
+  /* Cream background with subtle texture */
+  background-color: #fffaf0;
+  background-image: 
+    radial-gradient(circle, rgba(255, 105, 180, 0.08) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 193, 204, 0.12) 2px, transparent 2px);
+  background-size: 24px 24px, 48px 48px;
+  background-position: 0 0, 12px 12px;
+}
+
+/* ========== POP ENTRY ANIMATION ========== */
+@keyframes popEntry {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) rotate(-2deg) scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px) rotate(-2deg) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(-2deg) scale(1);
+  }
+}
+
+.container {
+  text-align: center;
+  background: #ffffff;
+  padding: 50px 55px 55px;
+  border-radius: 12px;
+  position: relative;
+  /* Love letter rotation */
+  transform: rotate(-2deg);
+  box-shadow: 
+    0 15px 40px rgba(255, 105, 180, 0.2),
+    0 5px 15px rgba(0, 0, 0, 0.08),
+    inset 0 0 80px rgba(255, 241, 245, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px dashed #ffc1cc;
+  max-width: 90vw;
+  /* Pop Entry Animation */
+  animation: popEntry 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Ribbon/Bow decoration */
+.container::before {
+  content: '🎀';
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3.2em;
+  filter: drop-shadow(0 4px 8px rgba(255, 105, 180, 0.3));
+  z-index: 10;
+  animation: bowWiggle 2s ease-in-out infinite;
+}
+
+@keyframes bowWiggle {
+  0%, 100% { transform: translateX(-50%) rotate(-5deg); }
+  50% { transform: translateX(-50%) rotate(5deg); }
+}
+
+/* Decorative corner hearts */
+.container::after {
+  content: '💕';
+  position: absolute;
+  bottom: -15px;
+  right: -10px;
+  font-size: 1.6em;
+  animation: floatHeart 3s ease-in-out infinite;
+}
+
+@keyframes floatHeart {
+  0%, 100% { transform: translateY(0) rotate(10deg); }
+  50% { transform: translateY(-8px) rotate(-5deg); }
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 2.8em;
+  color: #ff69b4;
+  margin-bottom: 10px;
+  text-shadow: 
+    2px 2px 0px #ffc1cc,
+    4px 4px 8px rgba(255, 105, 180, 0.2);
+  letter-spacing: 1px;
+  animation: textPop 0.6s ease-out 0.3s both;
+}
+
+@keyframes textPop {
+  0% { opacity: 0; transform: scale(0.8); }
+  70% { transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.6em;
+  color: #db7093;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+  animation: textPop 0.6s ease-out 0.5s both;
+}
+
+.buttons {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ========== SQUISHY BUTTON ANIMATIONS ========== */
+.yes-button {
+  font-family: 'Homemade Apple', cursive;
+  font-size: 1.4em;
+  padding: 16px 36px;
+  background: linear-gradient(145deg, #ffc1cc, #ffb3bf);
+  color: #8b0a50;
+  border: 4px solid #ffffff;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 
+    0 6px 20px rgba(255, 105, 180, 0.35),
+    0 3px 6px rgba(0, 0, 0, 0.1),
+    inset 0 2px 0 rgba(255, 255, 255, 0.6);
+  /* CRUCIAL: Smooth growth transition for JS size changes */
+  transition: 
+    transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.2s ease,
+    font-size 0.4s ease-in-out,
+    padding 0.4s ease-in-out;
+  position: relative;
+  animation: buttonBounceIn 0.5s ease-out 0.7s both;
+}
+
+.yes-button:hover {
+  transform: scale(1.1) rotate(-3deg);
+  box-shadow: 
+    0 10px 30px rgba(255, 105, 180, 0.4),
+    0 5px 10px rgba(0, 0, 0, 0.12),
+    inset 0 2px 0 rgba(255, 255, 255, 0.6);
+}
+
+.yes-button:active {
+  transform: scale(0.98) rotate(-1deg);
+  box-shadow: 
+    0 3px 10px rgba(255, 105, 180, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes buttonBounceIn {
+  0% { opacity: 0; transform: scale(0) rotate(-10deg); }
+  60% { transform: scale(1.15) rotate(3deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+.no-button {
+  font-family: 'Homemade Apple', cursive;
+  font-size: 1.4em;
+  padding: 16px 36px;
+  background: #ffffff;
+  color: #ff69b4;
+  border: 4px solid #ffc1cc;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 
+    0 6px 20px rgba(255, 193, 204, 0.4),
+    0 3px 6px rgba(0, 0, 0, 0.08);
+  transition: 
+    transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.2s ease;
+  animation: buttonBounceIn 0.5s ease-out 0.8s both;
+}
+
+.no-button:hover {
+  transform: scale(1.1) rotate(3deg);
+  box-shadow: 
+    0 10px 30px rgba(255, 193, 204, 0.5),
+    0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.no-button:active {
+  transform: scale(0.98) rotate(1deg);
+  box-shadow: 
+    0 3px 10px rgba(255, 193, 204, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* ========== FLOATING GIF ANIMATION ========== */
+@keyframes floatImage {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.gif_container {
+  margin-top: 20px;
+  padding: 15px;
+  background: #fff;
+  border: 4px dashed #ffc1cc;
+  border-radius: 16px;
+  position: relative;
+  box-shadow: 
+    0 8px 25px rgba(255, 105, 180, 0.15),
+    inset 0 0 30px rgba(255, 250, 245, 0.8);
+  animation: popEntry 0.6s ease-out 0.9s both;
+}
+
+/* Decorative stickers */
+.gif_container::before {
+  content: '💖';
+  position: absolute;
+  top: -20px;
+  right: -15px;
+  font-size: 1.8em;
+  animation: sparkleHeart 1.5s ease-in-out infinite;
+}
+
+.gif_container::after {
+  content: '✨';
+  position: absolute;
+  bottom: -15px;
+  left: -10px;
+  font-size: 1.5em;
+  animation: sparkleHeart 1.5s ease-in-out infinite 0.5s;
+}
+
+@keyframes sparkleHeart {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  50% { transform: scale(1.2) rotate(10deg); opacity: 0.8; }
+}
+
+.gif_container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  /* Floating animation for the image */
+  animation: floatImage 3s ease-in-out infinite;
+}
