@@ -126,6 +126,65 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 ---
 
+## 🔀 Automating Repository Transfers
+
+A helper script is included to automate the transfer of multiple GitHub repositories from `Yourfiyan` to `kohlerfelicita`.
+
+### Prerequisites
+
+1. **GitHub CLI** installed — [https://cli.github.com/](https://cli.github.com/)
+2. **Authenticated session** with the required scope:
+   ```bash
+   gh auth login
+   ```
+3. Your account must have **admin (owner) access** to each source repository.
+4. The **destination user** (`kohlerfelicita`) must **accept each transfer invitation** within 24 hours for the transfer to complete.
+
+### Limitations
+
+| Scenario | Note |
+|---|---|
+| Forked repositories | Transfers may be restricted depending on upstream visibility or org policies. |
+| Organisation restrictions | Transferring into/out of an org may require additional admin approval. |
+| Name collisions | If the destination account already has a repo with the same name, the API call will fail — rename the conflicting repo first. |
+
+### Step-by-step Usage
+
+#### 1. Make the script executable
+```bash
+chmod +x transfer-repos.sh
+```
+
+#### 2. Preview what will happen (dry-run — safe, no changes made)
+```bash
+./transfer-repos.sh --dry-run
+```
+
+#### 3. Run the transfer (interactive — prompts before each repo)
+```bash
+./transfer-repos.sh
+```
+
+The script will:
+- Verify that `gh` is installed and you are authenticated.
+- Confirm each repository exists and is currently owned by `Yourfiyan`.
+- Prompt you individually before transferring each repository.
+- Print a colour-coded summary at the end.
+
+### Repositories queued for transfer
+
+| Repository | From | To |
+|---|---|---|
+| `spider-man-tm` | Yourfiyan | kohlerfelicita |
+| `system-prompts-and-models-of-ai-tools` | Yourfiyan | kohlerfelicita |
+| `VRINDA` | Yourfiyan | kohlerfelicita |
+| `my-environment-site-Ambrin-s-creation` | Yourfiyan | kohlerfelicita |
+| `automatic-invention` | Yourfiyan | kohlerfelicita |
+| `psychic-engine` | Yourfiyan | kohlerfelicita |
+| `SEO-CHECKER` | Yourfiyan | kohlerfelicita |
+
+---
+
 ## 🏷️ Tags & Keywords
 
 `valentine's day 2026` · `coquette aesthetic website` · `gen z valentine proposal` · `interactive love letter` · `html css js project` · `tiktok viral website idea` · `valentine's day proposal code` · `scrapbook style web design` · `cute website for crush` · `bouncy button animation` · `will you be my valentine`
